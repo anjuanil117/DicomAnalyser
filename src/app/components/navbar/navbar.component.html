@@ -1,0 +1,163 @@
+<nav class=" navbar navbar-expand-lg navbar-absolute navbar-transparent">
+  <!-- <li>{{availableFile}}</li> -->
+  <div class=" container-fluid">
+
+    
+   
+    <!-- <ul>
+      <li *ngFor ="let c of count">
+        {{c.name}}</li>
+        {{myDate | date:'medium'}}
+      
+    </ul> -->
+    <!-- <ul>
+      <li *ngFor ="let k of time">
+       {{k.lastlogintime |date:'medium'}} </li>
+       
+      
+    </ul> -->
+    <!-- {{myDate | date:'medium'}} -->
+    <ul style="margin-bottom: auto;">
+    <li>
+    <button  type="button" style="color: crimson;" *ngFor ="let c of count" >{{c.count}}</button>
+    
+    </li>
+    </ul>
+    <h1 style="color: #ec6e87;padding-left: 45%; font-family: 'Brush Script MT', cursive; font-size:60px; "><B> Dicom Viewer</B></h1>
+   
+    <div class=" navbar-collapse" [ngbCollapse]="isCollapsed" id="navigation">
+      <ul class=" navbar-nav ml-auto">
+        <li>
+          
+          <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+            <div class="input-group input-group-alternative">
+
+              <input class="form-control" placeholder="Search" id="mySearch" type="text" value=""
+                (focus)="focus = true" (blur)="focus = false" >
+              <button type="button" (click)="displaysearch()"><i class="fa fa-search"></i></button>
+
+            </div>
+
+          </div>
+        
+      </li>
+         
+
+        <li class=" nav-item" ngbDropdown>
+          <a
+            class=" nav-link"
+            data-toggle="dropdown"
+            href="javascript:void(0)"
+            ngbDropdownToggle
+          >
+            <div class=" notification d-none d-lg-block d-xl-block"></div>
+            <i class=" tim-icons icon-sound-wave"> </i>
+           
+          </a>
+          <ul class=" dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
+            <li class=" nav-link">
+              <!-- <button type="button" onclick="">Available files</button> -->
+              <!-- <a *ngFor="let availableFile of availableFiles" class=" nav-item" href="javascript:void(0)"  ngbDropdownItem>
+                <li>{{availableFile}}</li>
+              </a> -->
+              <!-- <input type='button' value='Generate' onclick='f1(this)' />Available files</input> -->
+            </li>
+            <li class=" nav-link">
+              
+                <div class="file">
+      
+                  <input class="button1" type="file" (change)="onselectedfile($event)"><br><br>
+                  
+                  <button mat-raised-button color="primary" class="button" (click)="displayfile()">Submit</button>
+      
+                </div>
+             
+            </li>
+            
+            <!-- <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+                Mike John responded to your email
+              </a>
+            </li>
+           
+            <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+                You have 5 more tasks
+              </a>
+            </li>
+            <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+                Your friend Michael is in town
+              </a>
+            </li>
+            <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+                Another notification
+              </a>
+            </li>
+            <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+                Another one
+              </a>
+            </li> -->
+          </ul>
+        </li>
+        <li class=" nav-item" ngbDropdown>
+          <a
+            class=" nav-link"
+            data-toggle="dropdown"
+            href="javascript:void(0)"
+            ngbDropdownToggle
+          >
+            <div class=" photo">
+              <img alt="Profile Photo" src="assets/img/anime3.png" />
+            </div>
+            <b class=" caret d-none d-lg-block d-xl-block"> </b>
+            <p class=" d-lg-none">Log out</p>
+          </a>
+          <ul class=" dropdown-navbar" ngbDropdownMenu>
+            <li class=" nav-link">
+              <button type="button"  *ngFor ="let k of time" > {{k.lastlogintime |date:'medium'}}</button>
+             
+            </li>
+            <li class=" nav-link">
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem routerLink="/password">
+                Settings
+              </a>
+            </li>
+            <li class=" dropdown-divider"></li>
+            <li class=" nav-link">
+             
+              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem  routerLink="/login"> 
+                Log out
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class=" separator d-lg-none"></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-template #content let-modal>
+  <div class=" modal-header">
+    <input
+      class=" form-control"
+      id="inlineFormInputGroup"
+      placeholder="SEARCH"
+      type="text"
+    />
+
+    <button
+      aria-label="Close"
+      class=" close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class=" tim-icons icon-simple-remove"> </i>
+    </button>
+  </div>
+
+</ng-template>
