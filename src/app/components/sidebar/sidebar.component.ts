@@ -20,6 +20,7 @@ export const ROUTES: RouteInfo[] = [
   }
 ];
 
+
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -29,7 +30,32 @@ export class SidebarComponent implements OnInit {
   menuItems: any[];
   names:any=[];
   patients:any=[];
+  // public data = [
+  //   {
+  //   id: '101',
+  //   Name: 'Anand',
+  //   },
+  //   {
+  //     id:102,
+  //     Name:'Anju'
+  //   },
+  //   {
+  //     id:102,
+  //     Name:'Anju'
+  //   },
+  //   {
+  //     id:102,
+  //     Name:'Anju'
+  //   },
+  //   {
+  //     id:102,
+  //     Name:'Anju'
+  //   },
+   
   
+  
+  // ];
+  baseUrlString: string = 'https://192.168.0.8/8443';
   constructor(public logic: LogicService,
     private http: HttpClient) { }
 
@@ -43,7 +69,8 @@ export class SidebarComponent implements OnInit {
 
 
   ListPatients() {
-    return this.http.get("http://localhost:8443/all");//all
+    return this.http.get(this.baseUrlString +
+      '/all');//all
   }
  
   listpatient() {
@@ -69,17 +96,20 @@ export class SidebarComponent implements OnInit {
     studyParams = studyParams.append("name", name)
     const options = name ?
       { params: new HttpParams().set('name', name) } : {};
-    return this.http.get<Details>("http://10.197.0.55:30081/search", options)
+    return this.http.get<Details>(this.baseUrlString +
+      '/search', options)
       .subscribe((response) => {
         console.log("responce recieved", response)
         this.logic.data.push({
-          "name": response.name,
-          "pathology": response.pathology,
           "patientid": response.patientid,
-          "studydate": response.studydate,
-          "birthdate": response.birthdate,
-          "age": response.age,
+          "name": response.name,
           "sex": response.sex,
+          "birthdate": response.birthdate,
+          "physician":response.physician,
+          "studydate": response.studydate,
+          "studytime": response.studytime,
+          "pathology": response.pathology,
+          "studyid": response.studyid,
           "modality": response.modality,
           "image": 'data:image/jpeg;base64,'+ response.image
         })

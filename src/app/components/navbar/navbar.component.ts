@@ -23,12 +23,15 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
   count:any;
   time:any;
+ 
+
+  
 
   public isCollapsed = true;
 
   closeResult: string;
 
-
+  baseUrlString: string = 'https://192.168.0.8/8443';
   constructor(
     location: Location,
     private element: ElementRef,
@@ -43,50 +46,57 @@ export class NavbarComponent implements OnInit {
   
    ngOnInit()   {
 
-
-
-
-this.logic.getusercount().subscribe(
-      (data)=>{
-        this.count=data;
-      });
-
-   this.logic.getlogintime().subscribe(
-        (val)=>{
-          this.count=val;
-        });
+ // this.logic.getAvailablefiles().subscribe(
+      //         (data)=>{
+      //          this.count=data;
+      //         });
 
     
-   
-    
-    
+// 
 
-  }
+//    this.logic.getlogintime().subscribe(
+//         (val)=>{
+//           this.count=val;
+//         });
+
+ }
+ getAllFiles(){
+   this.logic.getAvailablefiles().subscribe((data)=>
+   {
+     this.count=data;
+   })
+ }
+ getTime(){
+  this.logic.getCurrentTime().subscribe((data)=>
+  {
+    this.time=data;
+  })
+}
+
  
 
   searchvalue: any;
-
-
-
-
   selectedfile: any
-
-
+  
   displayfile() {
     this.logic.data = [];
     let fromData = new FormData();
     fromData.append('file', this.selectedfile)
     console.log(this.selectedfile)
-    return this.http.post<Details>("http://localhost:8443/upload", fromData).subscribe((result) => {
+    return this.http.post<Details>(this.baseUrlString +
+      '/upload', fromData).subscribe((result) => {
 
       this.logic.data.push({
-        "name": result.name,
-        "pathology": result.pathology,
         "patientid": result.patientid,
-        "studydate": result.studydate,
-        "birthdate": result.birthdate,
-        "age": result.age,
+        "name": result.name,
         "sex": result.sex,
+        "birthdate": result.birthdate,
+        "physician":result.physician,
+        "studydate": result.studydate,
+        "studytime":result.studytime,
+        "pathology": result.pathology,
+        "studyid":result.studyid,
+       
         "modality": result.modality,
         "image": 'data:image/jpeg;base64,' + result.image
       })
@@ -106,19 +116,22 @@ this.logic.getusercount().subscribe(
     studyParams = studyParams.append("name", this.selectedsearch)
     const options = this.selectedsearch ?
       { params: new HttpParams().set('name', this.selectedsearch) } : {};
-    return this.http.get<Details>("http://localhost:8443/search", options)
+    return this.http.get<Details>(this.baseUrlString +
+      '/search', options)
       .subscribe((response) => {
         console.log("responce recieved", response)
         this.logic.data.push({
-          "name": response.name,
-          "pathology": response.pathology,
           "patientid": response.patientid,
-          "studydate": response.studydate,
-          "birthdate": response.birthdate,
-          "age": response.age,
+          "name": response.name,
           "sex": response.sex,
+          "birthdate": response.birthdate,
+          "physician":response.physician,
+          "studydate": response.studydate,
+          "studytime": response.studytime,
+          "pathology": response.pathology,
+          "studyid": response.studyid,
           "modality": response.modality,
-          "image": 'data:image/jpeg;base64,' + response.image
+          "image": 'data:image/jpeg;base64,'+ response.image
         })
         console.log("data" + this.logic.data)
       }

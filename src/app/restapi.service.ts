@@ -5,17 +5,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RestapiService {
+  baseUrlString: string = 'https://192.168.0.8/8443';
 
   constructor(private http:HttpClient) { }
 
 
   public login(username:string,password:string){
     const headers=new HttpHeaders({AUthorization:'Basic'+btoa(username+":"+password)})
-    return this.http.get("http://localhost:8443/login",{headers,responseType:'text'as 'json'});
+    return this.http.get(this.baseUrlString +
+      '/login',{headers,responseType:'text'as 'json'});
   }
 
   public doChange(password){
-    return this.http.post('http://localhost:8443/setting',password,{responseType:'text'as 'json'})
+    return this.http.post(this.baseUrlString +
+      '/setting',password,{responseType:'text'as 'json'})
   }
 
 

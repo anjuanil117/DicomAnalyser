@@ -1,43 +1,64 @@
 import { HttpClient } from '@angular/common/http';
+// import { Http, Response, Headers, RequestOptions, JsonpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-export class Details{
+
+import { of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+export class Details {
   constructor(
-    public name:string,
-    public patientid:string,
-    public pathology:string,
-    public studydate:string,
-    public birthdate:string,
-    public age:string,
-    public sex:string,
-    public modality:string,
-    public image:any,
-   
+    public patientid: string,
+    public name: string,
+    public sex: string,
+    public birthdate: string,
+    public physician: string,
+    public studydate: string,
+    public studytime: string,
+    public studyid: string,
+    public pathology: string,
+    public modality: string,
+    public image: any,
+    // private http: Http,
 
 
 
-  ) {}
+
+  ) { }
 }
 
 // export interface LoginTime{
-  
+
 // }
 @Injectable({
   providedIn: 'root'
 })
 export class LogicService {
-  name:any;
-  patientname:any;
-  patient:any=[];
-  data:any=[];
-  
+  name: any;
+  patientname: any;
+  patient: any = [];
+  data: any = [];
 
-  constructor(private http:HttpClient) { }
-  getusercount(){
-    return this.http.get<LogicService[]>('http://localhost:8443/count');
-  }
-  getlogintime(){
-    return this.http.get<LogicService[]>('http://localhost:8443/logintime');
-  }
+  //baseUrlString: string = 'https://jsonplaceholder.typicode.com/';
+  baseUrlString: string = 'https://192.168.0.8/8443';
+
+  constructor(private http: HttpClient) { }
   
+  getdummudata() {
+    return this.http.get(this.baseUrlString +
+      '/users').
+      pipe(map((res: Response) => res.json()),
+        catchError(<T>(error: any, result?: T) => {
+          return of(result as T);
+        })
+      );
+  }
+  getAvailablefiles(){
+
+    return this.http.get(this.baseUrlString+'/counts')
+  }
+  getCurrentTime(){
+
+    return this.http.get(this.baseUrlString+'/lastlogintime')
+  }
+
 }

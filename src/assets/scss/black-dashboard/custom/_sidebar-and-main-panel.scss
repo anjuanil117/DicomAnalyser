@@ -6,6 +6,7 @@
     &.wrapper-full-page{
         min-height: 100vh;
         height: auto;
+        // padding-top: 10%;
     }
 }
 
@@ -29,7 +30,7 @@
     background-position: center center;
     display: block;
     box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.6);
-    margin-top: 80px;
+    margin-top: 15%;
     margin-left: 20px;
     border-radius: 5px;
 
@@ -40,6 +41,8 @@
         z-index: 4;
         position: relative;
         overflow: auto;
+       
+        
 
         .dropdown .dropdown-backdrop{
           display: none !important;
@@ -574,6 +577,7 @@
         .main-panel{
           > .content{
             padding-left: 130px;
+            padding-top: 8%;
           }
         }
 
@@ -656,6 +660,7 @@
     width: 100%;
       .content {
       padding-left: 30px;
+     
     }
   }
 
@@ -727,6 +732,7 @@
   .main-panel .content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 8%;
   }
 
 }

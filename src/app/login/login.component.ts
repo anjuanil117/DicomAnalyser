@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   password: string;
   message: any
   myDate=Date.now();
-  constructor(private service: RestapiService,private router:Router) { }
+  constructor(public service: RestapiService,private router:Router) { }
 
   ngOnInit() {
   }

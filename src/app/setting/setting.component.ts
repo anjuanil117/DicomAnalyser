@@ -12,7 +12,7 @@ export class SettingComponent implements OnInit {
   message:any;
    password:Password=new Password("","");
 
-  constructor(private service:RestapiService,private router:Router) { }
+  constructor(public service:RestapiService,public router:Router) { }
 
   ngOnInit(): void {
   }

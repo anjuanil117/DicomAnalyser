@@ -1,4 +1,4 @@
-<div class=" content">
+<div class=" content" style="padding-top: 15%;">
   <div class=" col-sm-6 text-left">
               
     <h2 class=" card-title"  >PATIENT DETAILS</h2>
@@ -10,7 +10,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;" >Patient Id</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data">{{d.name}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data" >{{d.patientId}}</div>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;" >Patient Name</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data">{{d.name}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data" >{{d.patientName}}</div>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Patient Gender</h5>
         </div>
         <div class=" card-body" >
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data" >{{d.modality}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data" >{{d.patientGender}}</div>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Patient Birthdate</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data"></div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;"*ngFor="let d of logic.data" >{{d.patientBirth}}</div>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Physician Name</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data">{{d.name}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white; font-size: 13px;" *ngFor="let d of logic.data">{{d. physician}}</div>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Study date</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color:white; font-size: 13px;" *ngFor="let d of logic.data"></div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color:white; font-size: 13px;" *ngFor="let d of logic.data">{{d.studyDate}}</div>
         </div>
       </div>
     </div>
@@ -73,17 +73,17 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Study Time</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.sex}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.studyTime}}</div>
         </div>
       </div>
     </div>
     <div class="col-lg-2">
       <div class=" card card-chart" style=" height: 12vh;">
         <div class=" card-header">
-          <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Study Description</h5>
+          <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;"> pathology</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color:white; font-size: 13px;" *ngFor="let d of logic.data"></div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color:white; font-size: 13px;" *ngFor="let d of logic.data" >{{d.Pathology}}</div>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Study ID</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.sex}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.studyId}}</div>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
           <h5 class=" card-category" style="color: #DEC19B; font-size: 13px;">Modality</h5>
         </div>
         <div class=" card-body">
-          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.sex}}</div>
+          <div class=" chart-area" style=" text-align: center; font-size: large; color: white;" *ngFor="let d of logic.data">{{d.Modality}}</div>
         </div>
       </div>
     </div>
