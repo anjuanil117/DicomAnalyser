@@ -1,7 +1,41 @@
 <nav class=" navbar navbar-expand-lg navbar-absolute navbar-transparent">
   <!-- <li>{{availableFile}}</li> -->
   <div class=" container-fluid" style="height: 200px;">
-    <div style=" margin-bottom: auto;  background-color: rgb(14, 13, 13); width: 250px;height:200px; border: 5px outset white">
+
+
+    <form id="accesspanel" action="">
+      <h1 id="litheader"><div class=" photo">
+        <img alt="Profile Photo" src="assets/img/admin.jpg" />
+      </div>  Admin  </h1>
+      <div class="inset" style="margin-top: -10px;">
+        <!-- <p>
+          <input type="text" name="username" [(ngModel)]="username" id="email" placeholder="username">
+        </p> -->
+        <p>
+          <button type="button" style="color:rgb(250, 87, 95); background-color:rgb(15, 15, 15) ;">Login Time {{time}} </button>
+        </p>
+       
+        <p >
+          <a class=" nav-item" href="javascript:void(0)" style="color:rgb(250, 87, 95);  width: 50px;" ngbDropdownItem
+                routerLink="/password">
+                Settings
+              </a>
+        </p>
+        
+        <p style="margin-top: 10px;">
+          <a class=" nav-item" href="javascript:void(0)" style="color: rgb(245, 102, 102) ; width: 50px;" ngbDropdownItem
+          routerLink="/login">
+          Log out
+        </a>
+        </p>
+      </div>
+      <!-- <p class="p-container"> -->
+        <!-- <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()"> -->
+       
+        
+      <!-- </p> -->
+    </form>
+    <!-- <div class="">
       <ul class=" navbar-nav ml-auto" style="padding-right: 100%; width: 220px; padding-top: 5px; ">
         <li class=" nav-item" ngbDropdown>
 
@@ -13,7 +47,7 @@
               </div>
             </li>
             <li class=" nav-link" >
-              <button type="button" style="color: #141313; background-color:white ;"> {{time.lastlogintime}} </button>
+              <button type="button" style="color: #141313; background-color:white ;">Login Time {{time}} </button>
 
             </li>
             <li class=" nav-link">
@@ -22,7 +56,7 @@
                 Settings
               </a>
             </li>
-            <!-- <li class=" dropdown-divider"></li> -->
+            <li class=" dropdown-divider"></li>
             <li class=" nav-link">
 
               <a class=" nav-item" href="javascript:void(0)" style="color: white ; width: 50px;" ngbDropdownItem
@@ -33,7 +67,7 @@
           </ul>
         </li>
       </ul>
-    </div>
+    </div> -->
 
 
     <!-- <ul>
@@ -55,20 +89,77 @@
 
 
     </ul>
-     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-    <div  class="w3-container w3-center w3-animate-zoom" style="margin-left:10%;">
+    
+    <div style="margin-left: 40%; margin-top: 5%;">
       <h1 class="header">
         <B> Dicom Viewer</B>
       </h1>
     </div>
     
     <div class=" navbar-collapse" [ngbCollapse]="isCollapsed" id="navigation" style="padding-bottom: 70px; margin-left: 20%;">
-      <div style=" margin-bottom: auto; margin-top: 20%; background-color: black; width: 300px;height:200px; border: 5px outset whitesmoke; padding-top: 15px;" >
-      <ul class=" navbar-nav ml-auto">
-        <li class=" nav-item">
+     
 
-          <ul>
+      
+    <form id="accesspanel" action="" style="margin-left: 75%; width: 300px; height:200px; margin-top: 15px; " > 
+     
+      <div class="inset" style="margin-top: -10px; ">
+        <!-- <p>
+          <input type="text" name="username" [(ngModel)]="username" id="email" placeholder="username">
+        </p> -->
+        <p>
+          <button type="button" style="color:rgb(250, 87, 95); background-color:rgb(15, 15, 15) ;">Files {{time}} </button>
+        </p>
+       
+        <p >
+          <!-- <div class="file"> -->
+
+                <input class="button1" type="file" (change)="onselectedfile($event)" style="color:rgb(250, 87, 95);"><br><br>
+                <button mat-raised-button color="primary" class="button" (click)="displayfile()" style="background-color:rgb(250, 87, 95);">Submit</button>
+
+              <!-- </div>  --> 
+        </p>
+        
+        <p style="margin-top: 10px;">
+          <input class="form-control" placeholder="Search" id="mySearch" type="text" value=""
+          (focus)="focus = true" (blur)="focus = false" >
+        <button type="button" (click)="displaysearch()" style="background-color:rgb(250, 87, 95);">submit</button>
+          
+        </p>
+      </div>
+      <!-- <p class="p-container"> -->
+        <!-- <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()"> -->
+       
+        
+      <!-- </p> -->
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <ul class=" navbar-nav ml-auto"> -->
+        <!-- <li class=" nav-item"> -->
+
+          <!-- <ul> -->
 
             <!-- <li class=" nav-link">
               <button type="button" style="color: #080808;"> {{myDate | date:'medium'}} </button>
@@ -78,38 +169,36 @@
             
           
             <!-- <li class=" dropdown-divider"></li> -->
-            <li class=" nav-link">
-              <div class="file">
+            <!-- <li class=" nav-link"> -->
+              <!-- <div class="file">
 
                 <input class="button1" type="file" (change)="onselectedfile($event)"><br><br>
                 <button mat-raised-button color="primary" class="button" (click)="displayfile()">Submit</button>
 
-              </div>
+              </div> -->
 
               <!-- <a class=" nav-item" href="javascript:void(0)" style="color: #141313 ; width: 50px;" ngbDropdownItem
                 routerLink="/login">
                 Log out
               </a> -->
-            </li>
-            <li>
-              <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
-                <div class="input-group input-group-alternative" style="    padding-top: 5px; width: 150px;" >
+            <!-- </li> -->
+            <!-- <li> -->
+              <!-- <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }"> -->
+                <!-- <div class="input-group input-group-alternative" style="    padding-top: 5px; width: 150px;" > -->
 
-                  <input class="form-control" placeholder="Search" id="mySearch" type="text" value=""
-                    (focus)="focus = true" (blur)="focus = false" >
-                  <button type="button" (click)="displaysearch()"><i class="fa fa-search"></i></button>
+                 
 
-                </div>
+                <!-- </div> -->
 
-              </div>
-              </li>
-              <li>
+             <!-- </div> -->
+              <!-- </li> -->
+              <!-- <li>
                 <button type="button" style="color: #141313; background-color:white ;"> {{count.count}} </button>
-              </li>
-          </ul>
+              </li> -->
+          <!-- </ul>
         </li>
-      </ul>
-    </div>
+      </ul> -->
+   
       <!-- <ul class=" navbar-nav ml-auto">
         <li>
 
