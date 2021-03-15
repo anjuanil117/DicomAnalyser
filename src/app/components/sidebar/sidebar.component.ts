@@ -55,7 +55,7 @@ export class SidebarComponent implements OnInit {
   
   
   // ];
-  baseUrlString: string = 'https://192.168.0.8/8443';
+  baseUrlString: string = 'http://ip172-18-0-13-c17n3gpbqvp00094ma60-8443.direct.labs.play-with-docker.com/';
   constructor(public logic: LogicService,
     private http: HttpClient) { }
 

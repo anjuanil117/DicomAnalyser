@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
   count:any;
   time:any;
+  todayDate : Date = new Date();
  
 
   
@@ -31,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
   closeResult: string;
 
-  baseUrlString: string = 'https://192.168.0.8/8443';
+  baseUrlString: string = 'http://ip172-18-0-13-c17n3gpbqvp00094ma60-8443.direct.labs.play-with-docker.com/';
   constructor(
     location: Location,
     private element: ElementRef,
@@ -64,13 +65,17 @@ export class NavbarComponent implements OnInit {
    this.logic.getAvailablefiles().subscribe((data)=>
    {
      this.count=data;
+     console.log(this.count)
+     
    })
  }
  getTime(){
   this.logic.getCurrentTime().subscribe((data)=>
   {
     this.time=data;
-  })
+    
+  }
+  )
 }
 
  

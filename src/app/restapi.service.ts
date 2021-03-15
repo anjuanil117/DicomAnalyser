@@ -5,15 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RestapiService {
-  baseUrlString: string = 'https://192.168.0.8/8443';
+  baseUrlString: string = 'http://ip172-18-0-13-c17n3gpbqvp00094ma60-8443.direct.labs.play-with-docker.com/';
 
   constructor(private http:HttpClient) { }
 
 
-  public login(username:string,password:string){
-    const headers=new HttpHeaders({AUthorization:'Basic'+btoa(username+":"+password)})
-    return this.http.get(this.baseUrlString +
-      '/login',{headers,responseType:'text'as 'json'});
+  public  login(user){
+    //const headers=new HttpHeaders({AUthorization:'Basic'+btoa(username+":"+password)})
+    return this.http.post(this.baseUrlString +
+      '/login',user);
   }
 
   public doChange(password){

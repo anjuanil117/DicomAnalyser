@@ -39,19 +39,19 @@ export class LogicService {
   data: any = [];
 
   //baseUrlString: string = 'https://jsonplaceholder.typicode.com/';
-  baseUrlString: string = 'https://192.168.0.8/8443';
+  baseUrlString: string = 'http://ip172-18-0-13-c17n3gpbqvp00094ma60-8443.direct.labs.play-with-docker.com/';
 
   constructor(private http: HttpClient) { }
   
-  getdummudata() {
-    return this.http.get(this.baseUrlString +
-      '/users').
-      pipe(map((res: Response) => res.json()),
-        catchError(<T>(error: any, result?: T) => {
-          return of(result as T);
-        })
-      );
-  }
+  // getdummudata() {
+  //   return this.http.get(this.baseUrlString +
+  //     '/users').
+  //     pipe(map((res: Response) => res.json()),
+  //       catchError(<T>(error: any, result?: T) => {
+  //         return of(result as T);
+  //       })
+  //     );
+  // }
   getAvailablefiles(){
 
     return this.http.get(this.baseUrlString+'/counts')
