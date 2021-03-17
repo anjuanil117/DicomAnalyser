@@ -3,14 +3,14 @@
   </div>
  
   
-  <form id="accesspanel" action="">
+  <form #loginform="ngForm">
     <h1 id="litheader">Admin Login</h1>
     <div class="inset">
       <p>
-        <input type="text" name="username" [(ngModel)]="loginUserData.username" id="username" placeholder="username">
+        <input type="text" name="username" [(ngModel)]="user.username"  placeholder="username">
       </p>
       <p>
-        <input type="password" name="password" [(ngModel)]="loginUserData.password" id="password" placeholder="password">
+        <input type="password" name="password" [(ngModel)]="user.password"  placeholder="password">
       </p>
     </div>
     <p class="p-container">
