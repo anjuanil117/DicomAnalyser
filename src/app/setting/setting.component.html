@@ -1,27 +1,21 @@
-
 <div class="background-wrap">
-    <div class="background"></div>
-  </div>
-  <div>
-    <h1>{{message}}</h1>
-    </div>>
+  <div class="background"></div>
+</div>
 
 
-  <form id="accesspanel" action="">
-    <h1 id="litheader">Change Password</h1>
-    <div class="inset">
-      <p>
-        <input type="password"  [(ngModel)]="password.oldPassword" id="password" placeholder="Old Password" required >
-      </p>
-      
-      <p>
-        <input type="password"  [(ngModel)]="password.newPassword" id="password" placeholder="New Password" required >
-      </p>
-      <p>
-        <input type="password"  [(ngModel)]="password.newPassword" id="password" placeholder="Confirm Password" required >
-      </p>
-    </div>
-    <p class="p-container">
-      <input type="submit" name="Login" id="go" value="Confirm" (click)="changeNow()">
+<form #loginform="ngForm">
+  <h1 id="litheader">Setting</h1>
+  <div class="inset">
+    <p>
+      <input type="text" name="oldPassword" [(ngModel)]="pass.oldPass"  placeholder="oldPassword">
     </p>
-  </form>
+    <p>
+      <input type="password" name="newPassword" [(ngModel)]="pass.newPass"  placeholder="newPassword">
+    </p>
+    
+  </div>
+  <p class="p-container">
+    <input type="submit" name="Login" id="go" value="Login" (click)="changeNow()">
+    
+  </p>
+</form>

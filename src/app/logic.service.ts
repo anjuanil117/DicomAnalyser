@@ -7,17 +7,18 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 export class Details {
   constructor(
-    public patientid: string,
-    public name: string,
-    public sex: string,
-    public birthdate: string,
-    public physician: string,
-    public studydate: string,
-    public studytime: string,
-    public studyid: string,
-    public pathology: string,
+    public patientId: string,
+    public patientName: string,
+    public patientGender: string,
+    public patientBirthdate: string,
+    public physicianName: string,
+    public studyDate: string,
+    public studyTime: string,
+    public studyId: string,
+    public studyDescription: string,
     public modality: string,
-    public image: any,
+    public uploadTime: any,
+    public uploadImage: any,
     // private http: Http,
 
 
@@ -33,13 +34,15 @@ export class Details {
   providedIn: 'root'
 })
 export class LogicService {
-  name: any;
-  patientname: any;
+  keyword: any;
+  names:any= [];
+  patientName: any;
   patient: any = [];
   data: any = [];
+  searchdata: any=[];
 
   //baseUrlString: string = 'https://jsonplaceholder.typicode.com/';
-  baseUrlString: string = 'http://2886795323-8443-elsy05.environments.katacoda.com/';
+  baseUrlString: string = 'http://ip172-18-0-47-c1ashpgh550g00ecerk0-8443.direct.labs.play-with-docker.com/';
 
   constructor(private http: HttpClient) { }
   
@@ -54,7 +57,7 @@ export class LogicService {
   // }
   getAvailablefiles(){
 
-    return this.http.get(this.baseUrlString+'/counts')
+    return this.http.get(this.baseUrlString+'/count')
   }
   getCurrentTime(){
 

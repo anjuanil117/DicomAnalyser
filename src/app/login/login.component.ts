@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   message: any
   user=new User();
   myDate=Date.now();
+  data:{
+    username:" ",
+    password:" "
+  }
   constructor(private service: RestapiService,private router:Router) { }
 
   ngOnInit() {
@@ -25,11 +29,25 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
 
-    this.service.login(this.user).subscribe(
-      data=>console.log("response received"),
-      err=>console.log("exception")
+    console.log(this.user.username)
+    
+    this.service.login(this.user.username,this.user.password).subscribe(
+      
+    data=>{
+      if((data.status)==200)
+      {
+        console.log("hi")
+        this.router.navigate(["/dashboard"])
+      }
+      else{
+        alert("invalid credentials")
+      }
+    }
+    ,
+    err=>console.log("exception")
     )
-    this.router.navigate(["/dashboard"])
+   
+    // this.router.navigate(["/dashboard"])
 
 
     // this.router.navigate(["/dashboard"])

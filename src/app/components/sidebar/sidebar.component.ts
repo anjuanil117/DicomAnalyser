@@ -28,8 +28,9 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-  names:any=[];
+  public names:any=[];
   patients:any=[];
+  //public keys : any[] = [];
   // public data = [
   //   {
   //   id: '101',
@@ -55,7 +56,7 @@ export class SidebarComponent implements OnInit {
   
   
   // ];
-  baseUrlString: string = 'http://2886795323-8443-elsy05.environments.katacoda.com/';
+  baseUrlString: string = 'http://ip172-18-0-47-c1ashpgh550g00ecerk0-8443.direct.labs.play-with-docker.com/';
   constructor(public logic: LogicService,
     private http: HttpClient) { }
 
@@ -70,50 +71,55 @@ export class SidebarComponent implements OnInit {
 
   ListPatients() {
     return this.http.get(this.baseUrlString +
-      '/all');//all
+      '/All');//all
   }
  
   listpatient() {
     this.ListPatients().subscribe((res: any) => {
       console.log("Response:-", res);
-        res.names.forEach(element => {
+      
+        res.forEach(element => 
+          {
           this.logic.patient.push({
             "name": element
+           
             })
-        });
-        console.log(this.logic.patient);
+            
+        }
+        );
+        // console.log("name");
+        console.log("patient",this.logic.patient);
 
     })
   }
 
 
-
   displaydetails(name) {
+    alert(name)
     this.logic.data = [];
-    console.log(name)
-    this.logic.patientname=name;
+    console.log("patient",this.logic.patient[0].name.patientName);
+    this.logic.patientName=name;
     let studyParams = new HttpParams();
     studyParams = studyParams.append("name", name)
     const options = name ?
-      { params: new HttpParams().set('name', name) } : {};
+      { params: new HttpParams().set('keyword', name) } : {};
     return this.http.get<Details>(this.baseUrlString +
       '/search', options)
       .subscribe((response) => {
-        console.log("responce recieved", response)
         this.logic.data.push({
-          "patientid": response.patientid,
-          "name": response.name,
-          "sex": response.sex,
-          "birthdate": response.birthdate,
-          "physician":response.physician,
-          "studydate": response.studydate,
-          "studytime": response.studytime,
-          "pathology": response.pathology,
-          "studyid": response.studyid,
-          "modality": response.modality,
-          "image": 'data:image/jpeg;base64,'+ response.image
+          "patientId": response[0].patientId,
+          "patientName": response[0].patientName,
+          "patientGender": response[0].patientGender,
+          "patientBirthdate": response[0].patientBirthdate,
+          "physicianName":response[0].physicianName,
+          "studyDate": response[0].studyDate,
+          "studyTime": response[0].studyTime,
+          "pathology": response[0].studyDescription,
+          "studyId": response[0].studyId,
+          "modality": response[0].modality,
+          "image": 'data:image/jpeg;base64,{{image}}'+ response.uploadImage
         })
-        console.log("data" + this.logic.data)
+        console.log("data",this.logic.data)
       }
       )
   }

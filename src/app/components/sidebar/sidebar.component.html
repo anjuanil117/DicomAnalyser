@@ -9,12 +9,12 @@
         <th>Patient List</th>
       </thead>
       <!-- <li *ngFor="let d of logic.patient" (click)="displaydetails(d.name)"[ngClass] = "{'highlight':d.name == this.logic.patientname}" > -->
-      <tbody *ngFor="let d of logic.patient" (click)="displaydetails(d.name)"[ngClass] = "{'highlight':d.name == this.logic.patientname}">
+      <tbody *ngFor="let d of logic.patient" (click)="displaydetails(d.name.patientName)" [ngClass] = "{'highlight':d.patientName == this.logic.patientname}">
         <!-- (click)="displaySelectedPatientDetail()" -->
         
 
       <tr>
-      <td>{{d.name}}</td>
+      <td>{{d.name.patientName}}</td>
       
       </tr>
       
